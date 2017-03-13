@@ -8,27 +8,34 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=43;
+		nextID=90;
+	};
+	class LayerIndexProvider
+	{
+		nextID=8;
 	};
 	class Camera
 	{
-		pos[]={7445.4966,21.488344,7491.522};
-		dir[]={0.12373144,-0.47193155,0.87305784};
-		up[]={0.066294089,0.88131851,0.46778369};
-		aside[]={0.99021161,1.6723134e-006,-0.14033118};
+		pos[]={7435.8765,14.38722,7511.6069};
+		dir[]={0.85591418,-0.47062969,0.21448451};
+		up[]={0.45657417,0.88229144,0.11441299};
+		aside[]={0.24308634,-5.1409006e-007,-0.97004515};
 	};
 };
 binarizationWanted=0;
 addons[]=
 {
 	"A3_Characters_F",
+	"A3_Structures_F_EPC_Civ_Accessories",
+	"A3_Structures_F_Heli_VR_Helpers",
+	"A3_Structures_F_EPB_Items_Military",
 	"A3_Characters_F_Exp_Civil"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=2;
+		items=5;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -37,6 +44,27 @@ class AddonsMetaData
 			url="https://www.arma3.com";
 		};
 		class Item1
+		{
+			className="A3_Structures_F_EPC";
+			name="Arma 3 Win Episode - Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item2
+		{
+			className="A3_Structures_F_Heli";
+			name="Arma 3 Helicopters - Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item3
+		{
+			className="A3_Structures_F_EPB";
+			name="Arma 3 Adapt Episode - Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item4
 		{
 			className="A3_Characters_F_Exp";
 			name="Arma 3 Apex - Characters and Clothing";
@@ -199,129 +227,497 @@ class Mission
 		items=4;
 		class Item0
 		{
-			dataType="Group";
-			side="West";
+			dataType="Layer";
+			name="BLUFOR";
 			class Entities
 			{
-				items=3;
+				items=11;
 				class Item0
 				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={7441.7271,5.0014391,7513.7886};
-						angles[]={0,1.5926899,0};
-					};
+					dataType="Group";
 					side="West";
-					flags=7;
+					class Entities
+					{
+						items=3;
+						class Item0
+						{
+							dataType="Object";
+							class PositionInfo
+							{
+								position[]={7441.7271,5.0014391,7513.7886};
+								angles[]={0,1.5926899,0};
+							};
+							side="West";
+							flags=7;
+							class Attributes
+							{
+								isPlayer=1;
+							};
+							id=1;
+							type="B_Survivor_F";
+						};
+						class Item1
+						{
+							dataType="Object";
+							class PositionInfo
+							{
+								position[]={7439.6841,5.0014391,7513.7749};
+								angles[]={0,1.5926899,0};
+							};
+							side="West";
+							flags=5;
+							class Attributes
+							{
+								isPlayable=1;
+							};
+							id=3;
+							type="B_Survivor_F";
+						};
+						class Item2
+						{
+							dataType="Object";
+							class PositionInfo
+							{
+								position[]={7437.9829,5.0014391,7513.9004};
+								angles[]={0,1.5800934,0};
+							};
+							side="West";
+							flags=5;
+							class Attributes
+							{
+							};
+							id=33;
+							type="B_Survivor_F";
+						};
+					};
 					class Attributes
 					{
-						isPlayer=1;
 					};
-					id=1;
-					type="B_Survivor_F";
+					id=0;
 				};
 				class Item1
 				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={7439.6841,5.0014391,7513.7749};
-						angles[]={0,1.5926899,0};
-					};
-					side="West";
-					flags=5;
+					dataType="Trigger";
+					position[]={7461.0269,5,7509.0811};
+					angle=1.6199796;
 					class Attributes
 					{
-						isPlayable=1;
+						text="Save";
+						onActivation="unit = (thisList select 0); _this = execVM ""saveTriggered.sqf"";";
+						sizeA=1;
+						sizeB=1;
+						repeatable=1;
+						activationBy="ANY";
 					};
-					id=3;
-					type="B_Survivor_F";
+					id=43;
+					type="EmptyDetector";
 				};
 				class Item2
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={7437.9829,5.0014391,7513.9004};
-						angles[]={0,1.5800934,0};
+						position[]={7460.957,6.2805929,7514.9922};
+						angles[]={0,1.5998776,0};
 					};
-					side="West";
+					side="Empty";
 					flags=5;
 					class Attributes
 					{
+						init="this addAction [""save"", ""CD\save.sqf""]; this addAction [""load"", ""CD\load.sqf""];";
+						name="saver";
 					};
-					id=33;
-					type="B_Survivor_F";
+					id=45;
+					type="Land_Atm_01_F";
+				};
+				class Item3
+				{
+					dataType="Comment";
+					class PositionInfo
+					{
+						position[]={7460.9253,6.3130002,7515.0029};
+						angles[]={0,1.6199715,0};
+					};
+					title="Location to save/load";
+					description="Location to save/load.";
+					id=46;
+					atlOffset=1.3130002;
+				};
+				class Item4
+				{
+					dataType="Comment";
+					class PositionInfo
+					{
+						position[]={7460.9736,5,7509.0518};
+						angles[]={0,1.6199715,0};
+					};
+					title="Location to save";
+					description="Location to save.";
+					id=47;
+				};
+				class Item5
+				{
+					dataType="Trigger";
+					position[]={7461.0229,5,7504.9961};
+					angle=1.6199796;
+					class Attributes
+					{
+						text="Load";
+						onActivation="unit = (thisList select 0); _this = execVM ""loadTriggered.sqf"";";
+						sizeA=1;
+						sizeB=1;
+						repeatable=1;
+						activationBy="ANY";
+					};
+					id=48;
+					type="EmptyDetector";
+				};
+				class Item6
+				{
+					dataType="Comment";
+					class PositionInfo
+					{
+						position[]={7460.9697,5,7504.9663};
+						angles[]={0,1.6199715,0};
+					};
+					title="Location to load";
+					description="Location to load.";
+					id=50;
+				};
+				class Item7
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={7461.021,5,7509.0781};
+						angles[]={0,1.6199797,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						createAsSimpleObject=1;
+					};
+					id=51;
+					type="Sign_Sphere200cm_F";
+				};
+				class Item8
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={7461.0181,5,7504.9941};
+						angles[]={0,1.6199797,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						createAsSimpleObject=1;
+					};
+					id=52;
+					type="Sign_Sphere200cm_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="ObjectTextureCustom0";
+							expression="_this setObjectTextureGlobal [0,_value]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="#(argb,8,8,3)color(0,0.6,0.1,1.0,ca)";
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
+				class Item9
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={7460.9048,5.1053624,7519.0571};
+						angles[]={0,4.7131395,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						init="this addaction [""Open Virtual Arsenal"", {[""Open"",true] call BIS_fnc_arsenal;}];";
+					};
+					id=54;
+					type="Land_Ammobox_rounds_F";
+				};
+				class Item10
+				{
+					dataType="Comment";
+					class PositionInfo
+					{
+						position[]={7460.9233,5,7519.0493};
+						angles[]={0,1.6199715,0};
+					};
+					title="Arsenal";
+					description="Arsenal.";
+					id=55;
 				};
 			};
-			class Attributes
-			{
-			};
-			id=0;
+			id=86;
+			atlOffset=0.0051288605;
 		};
 		class Item1
 		{
-			dataType="Group";
-			side="East";
+			dataType="Layer";
+			name="OPFOR";
 			class Entities
 			{
-				items=3;
+				items=11;
 				class Item0
 				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={7592.751,5.0014391,7513.6274};
-						angles[]={0,4.7903423,0};
-					};
+					dataType="Group";
 					side="East";
-					flags=7;
+					class Entities
+					{
+						items=3;
+						class Item0
+						{
+							dataType="Object";
+							class PositionInfo
+							{
+								position[]={7592.751,5.0014391,7513.6274};
+								angles[]={0,4.7903423,0};
+							};
+							side="East";
+							flags=7;
+							class Attributes
+							{
+								isPlayable=1;
+							};
+							id=13;
+							type="O_Survivor_F";
+						};
+						class Item1
+						{
+							dataType="Object";
+							class PositionInfo
+							{
+								position[]={7594.1929,5.0014391,7513.627};
+								angles[]={0,4.7221804,0};
+							};
+							side="East";
+							flags=5;
+							class Attributes
+							{
+								isPlayable=1;
+							};
+							id=15;
+							type="O_Survivor_F";
+						};
+						class Item2
+						{
+							dataType="Object";
+							class PositionInfo
+							{
+								position[]={7596.0166,5.0014391,7513.6133};
+								angles[]={0,4.7277064,0};
+							};
+							side="East";
+							flags=5;
+							class Attributes
+							{
+							};
+							id=37;
+							type="O_Survivor_F";
+							class CustomAttributes
+							{
+								class Attribute0
+								{
+									property="speaker";
+									expression="_this setspeaker _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="Male02PER";
+										};
+									};
+								};
+								class Attribute1
+								{
+									property="pitch";
+									expression="_this setpitch _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"SCALAR"
+												};
+											};
+											value=0.98000002;
+										};
+									};
+								};
+								nAttributes=2;
+							};
+						};
+					};
 					class Attributes
 					{
-						isPlayable=1;
 					};
-					id=13;
-					type="O_Survivor_F";
+					id=12;
 				};
 				class Item1
 				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={7594.1929,5.0014391,7513.627};
-						angles[]={0,4.7221804,0};
-					};
-					side="East";
-					flags=5;
+					dataType="Trigger";
+					position[]={7577.0493,5,7514.9536};
+					angle=4.7203836;
 					class Attributes
 					{
-						isPlayable=1;
+						text="Save";
+						onActivation="unit = (thisList select 0); _this = execVM ""saveTriggered.sqf"";";
+						sizeA=1;
+						sizeB=1;
+						repeatable=1;
+						activationBy="ANY";
 					};
-					id=15;
-					type="O_Survivor_F";
+					id=66;
+					type="EmptyDetector";
 				};
 				class Item2
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={7596.0166,5.0014391,7513.6133};
-						angles[]={0,4.7277064,0};
+						position[]={7577.3623,6.2805929,7509.0498};
+						angles[]={0,4.7002821,0};
 					};
-					side="East";
+					side="Empty";
 					flags=5;
 					class Attributes
 					{
+						init="this addAction [""save"", ""CD\save.sqf""]; this addAction [""load"", ""CD\load.sqf""];";
+						name="saver_2";
 					};
-					id=37;
-					type="O_Survivor_F";
+					id=67;
+					type="Land_Atm_01_F";
+				};
+				class Item3
+				{
+					dataType="Comment";
+					class PositionInfo
+					{
+						position[]={7577.395,6.3130078,7509.0405};
+						angles[]={0,4.720376,0};
+					};
+					title="Location to save/load";
+					description="Location to save/load.";
+					id=68;
+					atlOffset=1.3130078;
+				};
+				class Item4
+				{
+					dataType="Comment";
+					class PositionInfo
+					{
+						position[]={7577.1016,5.0000763,7514.9849};
+						angles[]={0,4.720376,0};
+					};
+					title="Location to save";
+					description="Location to save.";
+					id=69;
+					atlOffset=7.6293945e-005;
+				};
+				class Item5
+				{
+					dataType="Trigger";
+					position[]={7576.9917,5.125,7519.0298};
+					angle=4.7203832;
+					class Attributes
+					{
+						text="Load";
+						onActivation="unit = (thisList select 0); _this = execVM ""loadTriggered.sqf"";";
+						sizeA=1;
+						sizeB=1;
+						repeatable=1;
+						activationBy="ANY";
+					};
+					id=70;
+					type="EmptyDetector";
+					atlOffset=0.125;
+				};
+				class Item6
+				{
+					dataType="Comment";
+					class PositionInfo
+					{
+						position[]={7577.0439,5.2820587,7519.0615};
+						angles[]={0,4.720376,0};
+					};
+					title="Location to load";
+					description="Location to load.";
+					id=71;
+					atlOffset=0.28205872;
+				};
+				class Item7
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={7577.0552,5,7514.9565};
+						angles[]={0,4.7203846,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						createAsSimpleObject=1;
+					};
+					id=72;
+					type="Sign_Sphere200cm_F";
+				};
+				class Item8
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={7576.9966,5.0625,7519.0317};
+						angles[]={0,4.7203846,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						createAsSimpleObject=1;
+					};
+					id=73;
+					type="Sign_Sphere200cm_F";
+					atlOffset=0.0625;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
-							property="speaker";
-							expression="_this setspeaker _value;";
+							property="ObjectTextureCustom0";
+							expression="_this setObjectTextureGlobal [0,_value]";
 							class Value
 							{
 								class data
@@ -333,100 +729,287 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male02PER";
+									value="#(argb,8,8,3)color(0,0.6,0.1,1.0,ca)";
 								};
 							};
 						};
-						class Attribute1
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=0.98000002;
-								};
-							};
-						};
-						nAttributes=2;
+						nAttributes=1;
 					};
 				};
+				class Item9
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={7577.2515,5.1053624,7504.9746};
+						angles[]={0,1.530359,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						init="this addaction [""Open Virtual Arsenal"", {[""Open"",true] call BIS_fnc_arsenal;}];";
+					};
+					id=74;
+					type="Land_Ammobox_rounds_F";
+				};
+				class Item10
+				{
+					dataType="Comment";
+					class PositionInfo
+					{
+						position[]={7577.2324,5.0000763,7504.9814};
+						angles[]={0,4.720376,0};
+					};
+					title="Arsenal";
+					description="Arsenal.";
+					id=75;
+					atlOffset=7.6293945e-005;
+				};
 			};
-			class Attributes
-			{
-			};
-			id=12;
+			id=87;
+			atlOffset=0.023747444;
 		};
 		class Item2
 		{
-			dataType="Group";
-			side="Civilian";
+			dataType="Layer";
+			name="Independent";
 			class Entities
 			{
-				items=3;
+				items=11;
 				class Item0
 				{
-					dataType="Object";
-					class PositionInfo
+					dataType="Group";
+					side="Independent";
+					class Entities
 					{
-						position[]={7520.8691,5.0014391,7450.2544};
-						angles[]={0,0.019926501,0};
+						items=3;
+						class Item0
+						{
+							dataType="Object";
+							class PositionInfo
+							{
+								position[]={7521.3765,5.0014391,7577.9697};
+								angles[]={0,3.1350188,0};
+							};
+							side="Independent";
+							flags=7;
+							class Attributes
+							{
+								isPlayable=1;
+							};
+							id=27;
+							type="I_Survivor_F";
+						};
+						class Item1
+						{
+							dataType="Object";
+							class PositionInfo
+							{
+								position[]={7521.5518,5.0014391,7579.8633};
+								angles[]={0,3.1350188,0};
+							};
+							side="Independent";
+							flags=5;
+							class Attributes
+							{
+								isPlayable=1;
+							};
+							id=29;
+							type="I_Survivor_F";
+						};
+						class Item2
+						{
+							dataType="Object";
+							class PositionInfo
+							{
+								position[]={7521.6108,5.0014391,7582.0142};
+								angles[]={0,3.1350129,0};
+							};
+							side="Independent";
+							flags=5;
+							class Attributes
+							{
+							};
+							id=35;
+							type="I_Survivor_F";
+							class CustomAttributes
+							{
+								class Attribute0
+								{
+									property="speaker";
+									expression="_this setspeaker _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="Male02GRE";
+										};
+									};
+								};
+								class Attribute1
+								{
+									property="pitch";
+									expression="_this setpitch _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"SCALAR"
+												};
+											};
+											value=1.01;
+										};
+									};
+								};
+								nAttributes=2;
+							};
+						};
 					};
-					side="Civilian";
-					flags=7;
 					class Attributes
 					{
-						isPlayable=1;
 					};
-					id=21;
-					type="C_man_1";
+					id=26;
 				};
 				class Item1
 				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={7520.873,5.0014391,7449};
-						angles[]={0,0.019926501,0};
-					};
-					side="Civilian";
-					flags=5;
+					dataType="Trigger";
+					position[]={7521.0698,5,7570.9917};
+					angle=-3.1221681;
 					class Attributes
 					{
-						isPlayable=1;
+						text="Save";
+						onActivation="unit = (thisList select 0); _this = execVM ""saveTriggered.sqf"";";
+						sizeA=1;
+						sizeB=1;
+						repeatable=1;
+						activationBy="ANY";
 					};
-					id=23;
-					type="C_man_1";
+					id=56;
+					type="EmptyDetector";
 				};
 				class Item2
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={7520.8574,5.0014391,7448.0425};
-						angles[]={0,6.1985369,0};
+						position[]={7526.9766,6.2805929,7571.2373};
+						angles[]={0,3.1409149,0};
 					};
-					side="Civilian";
+					side="Empty";
 					flags=5;
 					class Attributes
 					{
+						init="this addAction [""save"", ""CD\save.sqf""]; this addAction [""load"", ""CD\load.sqf""];";
+						name="saver_1";
 					};
-					id=41;
-					type="C_man_1";
+					id=57;
+					type="Land_Atm_01_F";
+				};
+				class Item3
+				{
+					dataType="Comment";
+					class PositionInfo
+					{
+						position[]={7526.9863,6.3129315,7571.2695};
+						angles[]={0,3.1610088,0};
+					};
+					title="Location to save/load";
+					description="Location to save/load.";
+					id=58;
+					atlOffset=1.3129315;
+				};
+				class Item4
+				{
+					dataType="Comment";
+					class PositionInfo
+					{
+						position[]={7521.0391,5,7571.0444};
+						angles[]={0,3.1610088,0};
+					};
+					title="Location to save";
+					description="Location to save.";
+					id=59;
+				};
+				class Item5
+				{
+					dataType="Trigger";
+					position[]={7516.9932,5,7570.9805};
+					angle=3.1610165;
+					class Attributes
+					{
+						text="Load";
+						onActivation="unit = (thisList select 0); _this = execVM ""loadTriggered.sqf"";";
+						sizeA=1;
+						sizeB=1;
+						repeatable=1;
+						activationBy="ANY";
+					};
+					id=60;
+					type="EmptyDetector";
+				};
+				class Item6
+				{
+					dataType="Comment";
+					class PositionInfo
+					{
+						position[]={7516.9619,5,7571.0332};
+						angles[]={0,3.1610088,0};
+					};
+					title="Location to load";
+					description="Location to load.";
+					id=61;
+				};
+				class Item7
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={7521.0669,5,7570.9976};
+						angles[]={0,3.1610172,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						createAsSimpleObject=1;
+					};
+					id=62;
+					type="Sign_Sphere200cm_F";
+				};
+				class Item8
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={7516.9912,5,7570.9854};
+						angles[]={0,3.1610172,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						createAsSimpleObject=1;
+					};
+					id=63;
+					type="Sign_Sphere200cm_F";
 					class CustomAttributes
 					{
 						class Attribute0
 						{
-							property="speaker";
-							expression="_this setspeaker _value;";
+							property="ObjectTextureCustom0";
+							expression="_this setObjectTextureGlobal [0,_value]";
 							class Value
 							{
 								class data
@@ -438,100 +1021,290 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male05GRE";
+									value="#(argb,8,8,3)color(0,0.6,0.1,1.0,ca)";
 								};
 							};
 						};
-						class Attribute1
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=1.03;
-								};
-							};
-						};
-						nAttributes=2;
+						nAttributes=1;
 					};
 				};
+				class Item9
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={7531.0503,5.1053624,7571.0796};
+						angles[]={0,6.2541771,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						init="this addaction [""Open Virtual Arsenal"", {[""Open"",true] call BIS_fnc_arsenal;}];";
+					};
+					id=64;
+					type="Land_Ammobox_rounds_F";
+				};
+				class Item10
+				{
+					dataType="Comment";
+					class PositionInfo
+					{
+						position[]={7531.0435,5,7571.0605};
+						angles[]={0,3.1610088,0};
+					};
+					title="Arsenal";
+					description="Arsenal.";
+					id=65;
+				};
 			};
-			class Attributes
-			{
-			};
-			id=20;
+			id=88;
+			atlOffset=0.0051288605;
 		};
 		class Item3
 		{
-			dataType="Group";
-			side="Independent";
+			dataType="Layer";
+			name="Civilian";
 			class Entities
 			{
-				items=3;
+				items=11;
 				class Item0
 				{
-					dataType="Object";
-					class PositionInfo
+					dataType="Group";
+					side="Civilian";
+					class Entities
 					{
-						position[]={7521.3765,5.0014391,7577.9697};
-						angles[]={0,3.1350188,0};
+						items=3;
+						class Item0
+						{
+							dataType="Object";
+							class PositionInfo
+							{
+								position[]={7520.8691,5.0014391,7450.2544};
+								angles[]={0,0.019926501,0};
+							};
+							side="Civilian";
+							flags=7;
+							class Attributes
+							{
+								isPlayable=1;
+							};
+							id=21;
+							type="C_man_1";
+						};
+						class Item1
+						{
+							dataType="Object";
+							class PositionInfo
+							{
+								position[]={7520.873,5.0014391,7449};
+								angles[]={0,0.019926501,0};
+							};
+							side="Civilian";
+							flags=5;
+							class Attributes
+							{
+								isPlayable=1;
+							};
+							id=23;
+							type="C_man_1";
+						};
+						class Item2
+						{
+							dataType="Object";
+							class PositionInfo
+							{
+								position[]={7520.8574,5.0014391,7448.0425};
+								angles[]={0,6.1985369,0};
+							};
+							side="Civilian";
+							flags=5;
+							class Attributes
+							{
+							};
+							id=41;
+							type="C_man_1";
+							class CustomAttributes
+							{
+								class Attribute0
+								{
+									property="speaker";
+									expression="_this setspeaker _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="Male05GRE";
+										};
+									};
+								};
+								class Attribute1
+								{
+									property="pitch";
+									expression="_this setpitch _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"SCALAR"
+												};
+											};
+											value=1.03;
+										};
+									};
+								};
+								nAttributes=2;
+							};
+						};
 					};
-					side="Independent";
-					flags=7;
 					class Attributes
 					{
-						isPlayable=1;
 					};
-					id=27;
-					type="I_Survivor_F";
+					id=20;
 				};
 				class Item1
 				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={7521.5518,5.0014391,7579.8633};
-						angles[]={0,3.1350188,0};
-					};
-					side="Independent";
-					flags=5;
+					dataType="Trigger";
+					position[]={7523.002,5.0000534,7460.9536};
+					angle=-0.0011507472;
 					class Attributes
 					{
-						isPlayable=1;
+						text="Save";
+						onActivation="unit = (thisList select 0); _this = execVM ""saveTriggered.sqf"";";
+						sizeA=1;
+						sizeB=1;
+						repeatable=1;
+						activationBy="ANY";
 					};
-					id=29;
-					type="I_Survivor_F";
+					id=76;
+					type="EmptyDetector";
+					atlOffset=5.3405762e-005;
 				};
 				class Item2
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={7521.6108,5.0014391,7582.0142};
-						angles[]={0,3.1350129,0};
+						position[]={7516.9614,6.2805929,7460.9639};
+						angles[]={0,6.2619324,0};
 					};
-					side="Independent";
+					side="Empty";
 					flags=5;
 					class Attributes
 					{
+						init="this addAction [""save"", ""CD\save.sqf""]; this addAction [""load"", ""CD\load.sqf""];";
+						name="saver_3";
 					};
-					id=35;
-					type="I_Survivor_F";
+					id=77;
+					type="Land_Atm_01_F";
+				};
+				class Item3
+				{
+					dataType="Comment";
+					class PositionInfo
+					{
+						position[]={7516.9629,6.3129153,7460.9175};
+						angles[]={0,6.2820263,0};
+					};
+					title="Location to save/load";
+					description="Location to save/load.";
+					id=78;
+					atlOffset=1.3129153;
+				};
+				class Item4
+				{
+					dataType="Comment";
+					class PositionInfo
+					{
+						position[]={7523.0337,5,7460.9019};
+						angles[]={0,6.2820263,0};
+					};
+					title="Location to save";
+					description="Location to save.";
+					id=79;
+				};
+				class Item5
+				{
+					dataType="Trigger";
+					position[]={7527.0776,5.0000534,7461.0483};
+					angle=-0.0011512242;
+					class Attributes
+					{
+						text="Load";
+						onActivation="unit = (thisList select 0); _this = execVM ""loadTriggered.sqf"";";
+						sizeA=1;
+						sizeB=1;
+						repeatable=1;
+						activationBy="ANY";
+					};
+					id=80;
+					type="EmptyDetector";
+					atlOffset=5.3405762e-005;
+				};
+				class Item6
+				{
+					dataType="Comment";
+					class PositionInfo
+					{
+						position[]={7527.1099,5,7460.9966};
+						angles[]={0,6.2820263,0};
+					};
+					title="Location to load";
+					description="Location to load.";
+					id=81;
+				};
+				class Item7
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={7523.0049,5.0000534,7460.9478};
+						angles[]={0,6.2820349,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						createAsSimpleObject=1;
+					};
+					id=82;
+					type="Sign_Sphere200cm_F";
+					atlOffset=5.3405762e-005;
+				};
+				class Item8
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={7527.0796,5.0000534,7461.0435};
+						angles[]={0,6.2820349,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						createAsSimpleObject=1;
+					};
+					id=83;
+					type="Sign_Sphere200cm_F";
+					atlOffset=5.3405762e-005;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
-							property="speaker";
-							expression="_this setspeaker _value;";
+							property="ObjectTextureCustom0";
+							expression="_this setObjectTextureGlobal [0,_value]";
 							class Value
 							{
 								class data
@@ -543,37 +1316,47 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male02GRE";
+									value="#(argb,8,8,3)color(0,0.6,0.1,1.0,ca)";
 								};
 							};
 						};
-						class Attribute1
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=1.01;
-								};
-							};
-						};
-						nAttributes=2;
+						nAttributes=1;
 					};
 				};
+				class Item9
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={7512.9751,5.1054196,7461.0278};
+						angles[]={0,3.0920088,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						init="this addaction [""Open Virtual Arsenal"", {[""Open"",true] call BIS_fnc_arsenal;}];";
+					};
+					id=84;
+					type="Land_Ammobox_rounds_F";
+					atlOffset=5.7220459e-005;
+				};
+				class Item10
+				{
+					dataType="Comment";
+					class PositionInfo
+					{
+						position[]={7512.9814,5.0000038,7461.0469};
+						angles[]={0,6.2820263,0};
+					};
+					title="Arsenal";
+					description="Arsenal.";
+					id=85;
+					atlOffset=3.8146973e-006;
+				};
 			};
-			class Attributes
-			{
-			};
-			id=26;
+			id=89;
+			atlOffset=0.0051555634;
 		};
 	};
 };
