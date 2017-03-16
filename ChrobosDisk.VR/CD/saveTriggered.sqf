@@ -4,7 +4,7 @@
 
 private["_unit","_weapons","_assignedItems","_primary","_headGear","_vest","_uniform","_backpack","_goggles","_handgun","_blacklist","_array"]; 				// Sets up multiple local variables
 
-unit = _this select 1;																																			// Get unit variable (actionmenu)			To-Do: One solution, not two!
+// unit = _this select 1;																																		// Get unit variable (actionmenu)			To-Do: One solution, not two!
 // Alternative: unit = (thisList select 0); _this = execVM "script.sqf"; 																						// Get unit variable (trigger activation)
 
 _unit = unit; 																																					// Save global variable into local
@@ -52,8 +52,6 @@ if (CD_debugEnabled) then {
 	<br/><br/>_vestContainer: %3,
 	<br/><br/>_backpackContainer: %4</t>",_unit,_uniformContainer,_vestContainer,_backpackContainer];
 };
-
-
 
 // Let's save it into users profile! (Very dirty, has to be changed)
 profileNamespace setVariable ["CD_primary",_primary];
