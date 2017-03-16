@@ -12,14 +12,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=12;
+		nextID=24;
 	};
 	class Camera
 	{
-		pos[]={7430.8193,9.4219027,7505.7373};
-		dir[]={0.9075439,-0.28963119,0.30436566};
-		up[]={0.27468649,0.95710224,0.092122011};
-		aside[]={0.31799427,-7.3563933e-007,-0.94817674};
+		pos[]={7416.2344,17.725346,7491.8535};
+		dir[]={0.84089541,-0.29094774,0.4565171};
+		up[]={0.25577727,0.95670247,0.13885945};
+		aside[]={0.47715679,-6.967457e-007,-0.8789112};
 	};
 };
 binarizationWanted=0;
@@ -303,7 +303,7 @@ class Mission
 					class Attributes
 					{
 						text="Save";
-						onActivation="unit = (thisList select 0); _this = execVM ""saveTriggered.sqf"";";
+						onActivation="unit = (thisList select 0); _this = execVM ""CD\saveTriggered.sqf"";";
 						sizeA=1;
 						sizeB=1;
 						repeatable=1;
@@ -363,7 +363,7 @@ class Mission
 					class Attributes
 					{
 						text="Load";
-						onActivation="unit = (thisList select 0); _this = execVM ""loadTriggered.sqf"";";
+						onActivation="unit = (thisList select 0); _this = execVM ""CD\loadTriggered.sqf"";";
 						sizeA=1;
 						sizeB=1;
 						repeatable=1;
@@ -590,11 +590,11 @@ class Mission
 				{
 					dataType="Trigger";
 					position[]={7577.0493,5,7514.9536};
-					angle=4.7203827;
+					angle=4.7203822;
 					class Attributes
 					{
 						text="Save";
-						onActivation="unit = (thisList select 0); _this = execVM ""saveTriggered.sqf"";";
+						onActivation="unit = (thisList select 0); _this = execVM ""CD\saveTriggered.sqf"";";
 						sizeA=1;
 						sizeB=1;
 						repeatable=1;
@@ -655,7 +655,7 @@ class Mission
 					class Attributes
 					{
 						text="Load";
-						onActivation="unit = (thisList select 0); _this = execVM ""loadTriggered.sqf"";";
+						onActivation="unit = (thisList select 0); _this = execVM ""CD\loadTriggered.sqf"";";
 						sizeA=1;
 						sizeB=1;
 						repeatable=1;
@@ -886,11 +886,11 @@ class Mission
 				{
 					dataType="Trigger";
 					position[]={7521.0698,5,7570.9917};
-					angle=-3.1221676;
+					angle=-3.1221673;
 					class Attributes
 					{
 						text="Save";
-						onActivation="unit = (thisList select 0); _this = execVM ""saveTriggered.sqf"";";
+						onActivation="unit = (thisList select 0); _this = execVM ""CD\saveTriggered.sqf"";";
 						sizeA=1;
 						sizeB=1;
 						repeatable=1;
@@ -950,7 +950,7 @@ class Mission
 					class Attributes
 					{
 						text="Load";
-						onActivation="unit = (thisList select 0); _this = execVM ""loadTriggered.sqf"";";
+						onActivation="unit = (thisList select 0); _this = execVM ""CD\loadTriggered.sqf"";";
 						sizeA=1;
 						sizeB=1;
 						repeatable=1;
@@ -1177,11 +1177,11 @@ class Mission
 				{
 					dataType="Trigger";
 					position[]={7523.002,5.0000534,7460.9536};
-					angle=-0.0011507469;
+					angle=-0.0011507467;
 					class Attributes
 					{
 						text="Save";
-						onActivation="unit = (thisList select 0); _this = execVM ""saveTriggered.sqf"";";
+						onActivation="unit = (thisList select 0); _this = execVM ""CD\saveTriggered.sqf"";";
 						sizeA=1;
 						sizeB=1;
 						repeatable=1;
@@ -1242,7 +1242,7 @@ class Mission
 					class Attributes
 					{
 						text="Load";
-						onActivation="unit = (thisList select 0); _this = execVM ""loadTriggered.sqf"";";
+						onActivation="unit = (thisList select 0); _this = execVM ""CD\loadTriggered.sqf"";";
 						sizeA=1;
 						sizeB=1;
 						repeatable=1;

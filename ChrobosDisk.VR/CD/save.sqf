@@ -2,67 +2,130 @@
 	Author: github.com/Chrobo
 */
 
-private["_unit","_weapons","_assignedItems","_primary","_headGear","_vest","_uniform","_backpack","_goggles","_handgun","_blacklist","_array"]; 				// Sets up multiple local variables
+// Select triggering unit
+unit = _this select 1;																									// Get unit variable (actionmenu)
+// Alternative: unit = (thisList select 0); _this = execVM "script.sqf"; 												// Get unit variable (trigger activation)
+_unit = unit; 																											// Save global variable into local
 
-unit = _this select 1;																																			// Get unit variable (actionmenu)			To-Do: One solution, not two!
-// Alternative: unit = (thisList select 0); _this = execVM "script.sqf"; 																						// Get unit variable (trigger activation)
+// Get weapons
+_array = weaponsItems _unit;
 
-_unit = unit; 																																					// Save global variable into local
+	// Get 1st weapon
+	// Check for count of weapons
+	_count =  count _array;
+	if (_count > 0) then {
+		_result = (_array select 0) select 0;
+		profileNamespace setVariable ["CD_1stWeapon",_result];
+			// Get 1st attachment
+			_result = (_array select 0) select 1;
+			profileNamespace setVariable ["CD_1stWeaponAttachment1st",_result];
+			// Get 2nd attachment
+			_result = (_array select 0) select 2;
+			profileNamespace setVariable ["CD_1stWeaponAttachment2nd",_result];
+			// Get 3nd attachment
+			_result = (_array select 0) select 3;
+			profileNamespace setVariable ["CD_1stWeaponAttachment3rd",_result];
+				// Check for magazine
+				_count =  count ((_array select 0) select 4);
+				// Get magazine
+				if (_count > 0) then {
+					_result = ((_array select 0) select 4) select 0;
+					profileNamespace setVariable ["CD_1stWeaponMagazine",_result];
+					// Get magazine count
+					_result = ((_array select 0) select 4) select 1;
+					profileNamespace setVariable ["CD_1stWeaponMagazineCount",_result];
+				};
+			// Get 4th attachment
+			_result = (_array select 0) select 5;
+			profileNamespace setVariable ["CD_1stWeaponAttachment4th",_result];
+	};
 
-_weapons = weaponsItems _unit;																																	// Get classes from unit and save it in local variable
-_assignedItems = assignedItems _unit;																															// (Very dirty, has to be changed)
-_primary = primaryWeapon _unit;
-_headGear = headgear _unit; 
-_vest = vest _unit;
-_uniform = uniform _unit;
-_backpack = backpack _unit;
-_goggles = goggles _unit;
-_handgun = handgunWeapon _unit;
-if (CD_debugEnabled) then {
-	hint parseText format["<t align='left'>_unit: %1,
-	<br/><br/>_weapons: %2,
-	<br/><br/>_assignedItems: %3,
-	<br/><br/>_primary: %4,
-	<br/><br/>_headGear: %5,
-	<br/><br/>_vest: %6,
-	<br/><br/>_uniform: %7,
-	<br/><br/>_backpack: %8,
-	<br/><br/>_goggles: %9,
-	<br/><br/>_handgun: %10</t>",_unit,_weapons,_assignedItems,_primary,_headGear,_vest,_uniform,_backpack,_goggles,_handgun];
-};
+	// Get 2nd weapon
+	// Check for count of weapons
+	_count =  count _array;
+	if (_count > 1) then {
+		_result = (_array select 1) select 0;
+		profileNamespace setVariable ["CD_2ndWeapon",_result];
+			// Get 1st attachment
+			_result = (_array select 1) select 1;
+			profileNamespace setVariable ["CD_2ndWeaponAttachment1st",_result];
+			// Get 2nd attachment
+			_result = (_array select 1) select 2;
+			profileNamespace setVariable ["CD_2ndWeaponAttachment2nd",_result];
+			// Get 3nd attachment
+			_result = (_array select 1) select 3;
+			profileNamespace setVariable ["CD_2ndWeaponAttachment3rd",_result];
+				// Check for magazine
+				_count =  count ((_array select 1) select 4);
+				// Get magazine
+				if (_count > 0) then {
+					_result = ((_array select 1) select 4) select 0;
+					profileNamespace setVariable ["CD_2ndWeaponMagazine",_result];
+					// Get magazine
+					_result = ((_array select 1) select 4) select 1;
+					profileNamespace setVariable ["CD_2ndWeaponMagazineCount4th",_result];
+				};
+			// Get 4th attachment
+			_result = (_array select 1) select 5;
+			profileNamespace setVariable ["CD_2ndWeaponAttachment",_result];
+	};
 
-// Get stuff from containers
-private["_uniformContainer","_vestContainer","_backpackContainer"];																								// Sets up multiple local variables
+	// Get 3rd weapon
+	// Check for count of weapons
+	_count =  count _array;
+	if (_count > 2) then {
+		_result = (_array select 2) select 0;
+		profileNamespace setVariable ["CD_3rdWeapon",_result];
+			// Get 1st attachment
+			_result = (_array select 2) select 1;
+			profileNamespace setVariable ["CD_3rdWeaponAttachment1st",_result];
+			// Get 2nd attachment
+			_result = (_array select 2) select 2;
+			profileNamespace setVariable ["CD_3rdWeaponAttachment2nd",_result];
+			// Get 3nd attachment
+			_result = (_array select 2) select 3;
+			profileNamespace setVariable ["CD_3rdWeaponAttachment3rd",_result];
+				// Check for magazine
+				_count =  count ((_array select 2) select 4);
+				// Get magazine
+				if (_count > 0) then {
+					_result = ((_array select 2) select 4) select 0;
+					profileNamespace setVariable ["CD_3rdWeaponMagazine",_result];
+					// Get magazine
+					_result = ((_array select 2) select 4) select 1;
+					profileNamespace setVariable ["CD_3rdWeaponMagazineCount",_result];
+				};
+			// Get 4th attachment
+			_result = (_array select 2) select 5;
+			profileNamespace setVariable ["CD_3rdWeaponAttachment4th",_result];
+	};
 
-_uniformContainer = getItemCargo uniformContainer _unit;
-_uniformContainer = _uniformContainer + getMagazineCargo uniformContainer _unit;
-_uniformContainer = _uniformContainer + getWeaponCargo uniformContainer _unit;
-
-_vestContainer = getItemCargo vestContainer _unit;
-_vestContainer = _vestContainer + getMagazineCargo vestContainer _unit;
-_vestContainer = _vestContainer + getWeaponCargo vestContainer _unit;
-
-_backpackContainer = getItemCargo backpackContainer _unit;
-_backpackContainer = _backpackContainer + getMagazineCargo backpackContainer _unit;
-_backpackContainer = _backpackContainer + getWeaponCargo backpackContainer _unit;
-
-if (CD_debugEnabled) then {
-	hint parseText format["<t align='left'>_unit: %1,
-	<br/><br/>_uniformContainer: %2,
-	<br/><br/>_vestContainer: %3,
-	<br/><br/>_backpackContainer: %4</t>",_unit,_uniformContainer,_vestContainer,_backpackContainer];
-};
-
-
-
-// Let's save it into users profile! (Very dirty, has to be changed)
-profileNamespace setVariable ["CD_primary",_primary];
-profileNamespace setVariable ["CD_handgun",_handgun];
-profileNamespace setVariable ["CD_headGear",_headGear];
-profileNamespace setVariable ["CD_vest",_vest];
-profileNamespace setVariable ["CD_uniform",_uniform];
-profileNamespace setVariable ["CD_backpack",_backpack];
-profileNamespace setVariable ["CD_goggles",_goggles];
-saveProfileNamespace;
-
-// copyToClipboard XY;
+	// Get 3rd weapon
+	// Check for count of weapons
+	_count =  count _array;
+	if (_count > 3) then {
+		_result = (_array select 3) select 0;
+		profileNamespace setVariable ["CD_4thWeapon",_result];
+			// Get 1st attachment
+			_result = (_array select 3) select 1;
+			profileNamespace setVariable ["CD_4thWeaponAttachment1st",_result];
+			// Get 2nd attachment
+			_result = (_array select 3) select 2;
+			profileNamespace setVariable ["CD_4thWeaponAttachment2nd",_result];
+			// Get 3nd attachment
+			_result = (_array select 3) select 3;
+			profileNamespace setVariable ["CD_4thWeaponAttachment3rd",_result];
+				// Check for magazine
+				_count =  count ((_array select 3) select 4);
+				// Get magazine
+				if (_count > 0) then {
+					_result = ((_array select 3) select 4) select 0;
+					profileNamespace setVariable ["CD_4thWeaponMagazine",_result];
+					// Get magazine
+					_result = ((_array select 3) select 4) select 1;
+					profileNamespace setVariable ["CD_4thWeaponMagazineCount",_result];
+				};
+			// Get 4th attachment
+			_result = (_array select 3) select 5;
+			profileNamespace setVariable ["CD_4thWeaponAttachment4th",_result];
+	};
