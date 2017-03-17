@@ -6,6 +6,52 @@
 _unit = _this select 1;																			// Get unit variable (actionmenu)
 // Alternative: _unit = (thisList select 0); _this = execVM "script.sqf"; 						// Get unit variable (trigger activation)
 
+// Get uniform
+	_array = uniform _unit;
+	profileNamespace setVariable ["CD_Uniform",_array];
+
+// Get headgear
+	_array = headgear _unit;
+	profileNamespace setVariable ["CD_headgear",_array];
+
+// Get goggles
+	_array = goggles _unit;
+	profileNamespace setVariable ["CD_goggles",_array];
+
+// Get Head Mounted Display
+	_array = hmd _unit;
+	profileNamespace setVariable ["CD_headMountedDisplay",_array];
+
+// Get binocular
+	_array = binocular _unit;
+	profileNamespace setVariable ["CD_binocular",_array];
+
+// Get assigned items
+_array = assignedItems _unit;
+
+	// Clear data
+	profileNamespace setVariable ["CD_1stAssignedItem",""];
+	profileNamespace setVariable ["CD_2ndAssignedItem",""];
+	profileNamespace setVariable ["CD_3rdAssignedItem",""];
+	profileNamespace setVariable ["CD_4thAssignedItem",""];
+	profileNamespace setVariable ["CD_5thAssignedItem",""];
+
+	// Get 1st item
+	_result = _array select 0;
+	profileNamespace setVariable ["CD_1stAssignedItem",_result];
+	// Get 2nd item
+	_result = _array select 1;
+	profileNamespace setVariable ["CD_2ndAssignedItem",_result];
+	// Get 3rd attachment
+	_result = _array select 2;
+	profileNamespace setVariable ["CD_3rdAssignedItem",_result];
+	// Get 4th attachment
+	_result = _array select 3;
+	profileNamespace setVariable ["CD_4thAssignedItem",_result];
+	// Get 5th attachment
+	_result = _array select 4;
+	profileNamespace setVariable ["CD_5thAssignedItem",_result];
+
 // Get weapons
 _array = weaponsItems _unit;
 
@@ -21,7 +67,7 @@ _array = weaponsItems _unit;
 			// Get 2nd attachment
 			_result = (_array select 0) select 2;
 			profileNamespace setVariable ["CD_1stWeaponAttachment2nd",_result];
-			// Get 3nd attachment
+			// Get 3rd attachment
 			_result = (_array select 0) select 3;
 			profileNamespace setVariable ["CD_1stWeaponAttachment3rd",_result];
 				// Check for magazine
@@ -64,7 +110,7 @@ _array = weaponsItems _unit;
 			// Get 2nd attachment
 			_result = (_array select 1) select 2;
 			profileNamespace setVariable ["CD_2ndWeaponAttachment2nd",_result];
-			// Get 3nd attachment
+			// Get 3rd attachment
 			_result = (_array select 1) select 3;
 			profileNamespace setVariable ["CD_2ndWeaponAttachment3rd",_result];
 				// Check for magazine
@@ -107,7 +153,7 @@ _array = weaponsItems _unit;
 			// Get 2nd attachment
 			_result = (_array select 2) select 2;
 			profileNamespace setVariable ["CD_3rdWeaponAttachment2nd",_result];
-			// Get 3nd attachment
+			// Get 3rd attachment
 			_result = (_array select 2) select 3;
 			profileNamespace setVariable ["CD_3rdWeaponAttachment3rd",_result];
 				// Check for magazine
@@ -138,6 +184,8 @@ _array = weaponsItems _unit;
 		profileNamespace setVariable ["CD_3rdWeaponAttachment4th",""];
 	};
 
+	/*********************** Binoculars ***********************
+
 	// Get 4th weapon
 	// Check for count of weapons
 	_count =  count _array;
@@ -150,7 +198,7 @@ _array = weaponsItems _unit;
 			// Get 2nd attachment
 			_result = (_array select 3) select 2;
 			profileNamespace setVariable ["CD_4thWeaponAttachment2nd",_result];
-			// Get 3nd attachment
+			// Get 3rd attachment
 			_result = (_array select 3) select 3;
 			profileNamespace setVariable ["CD_4thWeaponAttachment3rd",_result];
 				// Check for magazine
@@ -179,4 +227,4 @@ _array = weaponsItems _unit;
 		profileNamespace setVariable ["CD_4thWeaponMagazine",""];
 		profileNamespace setVariable ["CD_4thWeaponMagazineCount",0];
 		profileNamespace setVariable ["CD_4thWeaponAttachment4th",""];
-	};
+	}; */
