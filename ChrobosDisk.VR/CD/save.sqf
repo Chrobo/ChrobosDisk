@@ -4,11 +4,20 @@
 
 // Select triggering unit
 _unit = _this select 1;																			// Get unit variable (actionmenu)
-// Alternative: _unit = (thisList select 0); _this = execVM "script.sqf"; 						// Get unit variable (trigger activation)
+// Alternative: unit = (thisList select 0); _this = execVM "script.sqf"; 						// Get unit variable (trigger activation)
+// _unit = unit;
 
 // Get uniform
 	_array = uniform _unit;
-	profileNamespace setVariable ["CD_Uniform",_array];
+	profileNamespace setVariable ["CD_uniform",_array];
+
+// Get vest
+	_array = vest _unit;
+	profileNamespace setVariable ["CD_vest",_array];
+
+// Get backpack
+	_array = backpack _unit;
+	profileNamespace setVariable ["CD_backpack",_array];
 
 // Get headgear
 	_array = headgear _unit;
@@ -227,4 +236,39 @@ _array = weaponsItems _unit;
 		profileNamespace setVariable ["CD_4thWeaponMagazine",""];
 		profileNamespace setVariable ["CD_4thWeaponMagazineCount",0];
 		profileNamespace setVariable ["CD_4thWeaponAttachment4th",""];
-	}; */
+	};
+
+	*************************************************************/
+
+// Get uniform container
+	// Get magazines
+	_array = getMagazineCargo uniformContainer _unit;
+	profileNamespace setVariable ["CD_MagazineUniform",_array];
+	// Get items
+	_array = getItemCargo uniformContainer _unit;
+	profileNamespace setVariable ["CD_ItemUniform",_array];
+	// Get weapons
+	_array = getWeaponCargo uniformContainer _unit;
+	profileNamespace setVariable ["CD_WeaponUniform",_array];
+
+// Get vest container
+	// Get magazines
+	_array = getMagazineCargo vestContainer _unit;
+	profileNamespace setVariable ["CD_MagazineVest",_array];
+	// Get items
+	_array = getItemCargo vestContainer _unit;
+	profileNamespace setVariable ["CD_ItemVest",_array];
+	// Get weapons
+	_array = getWeaponCargo vestContainer _unit;
+	profileNamespace setVariable ["CD_WeaponVest",_array];
+
+// Get backpack container
+	// Get magazines
+	_array = getMagazineCargo backpackContainer _unit;
+	profileNamespace setVariable ["CD_MagazineBackpack",_array];
+	// Get items
+	_array = getItemCargo backpackContainer _unit;
+	profileNamespace setVariable ["CD_ItemBackpack",_array];
+	// Get weapons
+	_array = getWeaponCargo backpackContainer _unit;
+	profileNamespace setVariable ["CD_WeaponBackpack",_array];
