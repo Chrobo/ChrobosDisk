@@ -36,30 +36,8 @@ _unit = _this select 1;																			// Get unit variable (actionmenu)
 	profileNamespace setVariable ["CD_binocular",_array];
 
 // Get assigned items
-_array = assignedItems _unit;
-
-	// Clear data
-	profileNamespace setVariable ["CD_1stAssignedItem",""];
-	profileNamespace setVariable ["CD_2ndAssignedItem",""];
-	profileNamespace setVariable ["CD_3rdAssignedItem",""];
-	profileNamespace setVariable ["CD_4thAssignedItem",""];
-	profileNamespace setVariable ["CD_5thAssignedItem",""];
-
-	// Get 1st item
-	_result = _array select 0;
-	profileNamespace setVariable ["CD_1stAssignedItem",_result];
-	// Get 2nd item
-	_result = _array select 1;
-	profileNamespace setVariable ["CD_2ndAssignedItem",_result];
-	// Get 3rd attachment
-	_result = _array select 2;
-	profileNamespace setVariable ["CD_3rdAssignedItem",_result];
-	// Get 4th attachment
-	_result = _array select 3;
-	profileNamespace setVariable ["CD_4thAssignedItem",_result];
-	// Get 5th attachment
-	_result = _array select 4;
-	profileNamespace setVariable ["CD_5thAssignedItem",_result];
+	_array = assignedItems _unit;
+	profileNamespace setVariable ["CD_AssignedItems",_array];
 
 // Get weapons
 _array = weaponsItems _unit;

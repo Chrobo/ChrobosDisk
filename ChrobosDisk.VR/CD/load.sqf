@@ -45,27 +45,20 @@ _unit = _this select 1;																			// Get unit variable (actionmenu)
 	_unit addWeapon _data;
 
 // Add assigned Items
-	// Get 1st item
-	_data = profileNamespace getVariable "CD_1stAssignedItem";
-	_unit addItem _data;
-	_unit assignItem _data;
-	// Get 2nd item
-	_data = profileNamespace getVariable "CD_2ndAssignedItem";
-	_unit addItem _data;
-	_unit assignItem _data;
-	// Get 3rd attachment
-	_data = profileNamespace getVariable "CD_3rdAssignedItem";
-	_unit addItem _data;
-	_unit assignItem _data;
-	// Get 4th attachment
-	_data = profileNamespace getVariable "CD_4thAssignedItem";
-	_unit addItem _data;
-	_unit assignItem _data;
-	// Get 5th attachment
-	_data = profileNamespace getVariable "CD_5thAssignedItem";
-	_unit addItem _data;
-	_unit assignItem _data;
-
+	_array = profileNamespace getVariable "CD_AssignedItems";
+	_count = (count _array) -1;
+	while {_count >= 0} do {
+		_data = _array select _count;
+		/*if ((_data != profileNamespace getVariable "CD_binocular") or (_data != profileNamespace getVariable "CD_headMountedDisplay")) then {
+		 	_unit addItem _data;
+			_unit assignItem _data;
+			_count = _count -1;
+		};*/
+		_unit addItem _data;
+		_unit assignItem _data;
+		_count = _count -1;
+	};
+	hint format ["End"]; sleep(2);
 // Add weapons
 
 	// Add 1st weapon
@@ -89,7 +82,7 @@ _unit = _this select 1;																			// Get unit variable (actionmenu)
 		// Add 4th attachment
 		_data = profileNamespace getVariable "CD_1stWeaponAttachment4th";
 		_unit addPrimaryWeaponItem _data;
-	};
+	}; hint format ["End 2"]; sleep(2);
 	
 	// Add 2nd weapon
 	if (profileNamespace getVariable "CD_2ndWeapon" != "empty") then {
@@ -112,7 +105,7 @@ _unit = _this select 1;																			// Get unit variable (actionmenu)
 		// Add 4th attachment
 		_data = profileNamespace getVariable "CD_2ndWeaponAttachment4th";
 		_unit addHandgunItem _data;
-	};
+	}; hint format ["End 3"]; sleep(2);
 
 	// Add 3rd weapon
 	if (profileNamespace getVariable "CD_3rdWeapon" != "empty") then {
@@ -135,7 +128,7 @@ _unit = _this select 1;																			// Get unit variable (actionmenu)
 		// Add 4th attachment
 		_data = profileNamespace getVariable "CD_3rdWeaponAttachment4th";
 		_unit addHandgunItem _data;
-	}; 
+	};  hint format ["End 4"]; sleep(2);
 
 	/*********************** Binoculars ***********************
 
