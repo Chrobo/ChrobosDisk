@@ -45,119 +45,52 @@ _unit = _this select 1;																			// Get unit variable (actionmenu)
 	_unit addWeapon _data;
 
 // Add assigned Items
-	_array = profileNamespace getVariable "CD_AssignedItems";
+	_array = profileNamespace getVariable "CD_assignedItems";
 	_count = (count _array) -1;
 	while {_count >= 0} do {
 		_data = _array select _count;
-		/*if ((_data != profileNamespace getVariable "CD_binocular") or (_data != profileNamespace getVariable "CD_headMountedDisplay")) then {
+		if (_data != profileNamespace getVariable "CD_binocular") then {
 		 	_unit addItem _data;
 			_unit assignItem _data;
 			_count = _count -1;
-		};*/
-		_unit addItem _data;
-		_unit assignItem _data;
-		_count = _count -1;
+		}
+		else {
+			_count = _count -1;
+		};
 	};
-	hint format ["End"]; sleep(2);
 // Add weapons
-
-	// Add 1st weapon
-	if (profileNamespace getVariable "CD_1stWeapon" != "empty") then {
-			// Add magazine + count (Magazine will be added to weapon)
-			_data = profileNamespace getVariable "CD_1stWeaponMagazine";
-			_data_2 = profileNamespace getVariable "CD_1stWeaponMagazineCount";
-			_unit addMagazine [_data, _data_2];
-	// Add 1st weapon
-	_data = profileNamespace getVariable "CD_1stWeapon";
-	_unit addWeapon _data;
-		// Add 1st attachment
-		_data = profileNamespace getVariable "CD_1stWeaponAttachment1st";
-		_unit addPrimaryWeaponItem _data;
-		// Add 2nd attachment
-		_data = profileNamespace getVariable "CD_1stWeaponAttachment2nd";
-		_unit addPrimaryWeaponItem _data;
-		// Add 3rd attachment
-		_data = profileNamespace getVariable "CD_1stWeaponAttachment3rd";
-		_unit addPrimaryWeaponItem _data;
-		// Add 4th attachment
-		_data = profileNamespace getVariable "CD_1stWeaponAttachment4th";
-		_unit addPrimaryWeaponItem _data;
-	}; hint format ["End 2"]; sleep(2);
-	
-	// Add 2nd weapon
-	if (profileNamespace getVariable "CD_2ndWeapon" != "empty") then {
-			// Add magazine + count (Magazine will be added to weapon)
-			_data = profileNamespace getVariable "CD_2ndWeaponMagazine";
-			_data_2 = profileNamespace getVariable "CD_2ndWeaponMagazineCount";
-			_unit addMagazine [_data, _data_2];
-	// Add 2nd weapon
-	_data = profileNamespace getVariable "CD_2ndWeapon";
-	_unit addWeapon _data;
-		// Add 1st attachment
-		_data = profileNamespace getVariable "CD_2ndWeaponAttachment1st";
-		_unit addHandgunItem _data;
-		// Add 2nd attachment
-		_data = profileNamespace getVariable "CD_2ndWeaponAttachment2nd";
-		_unit addHandgunItem _data;
-		// Add 3rd attachment
-		_data = profileNamespace getVariable "CD_2ndWeaponAttachment3rd";
-		_unit addHandgunItem _data;
-		// Add 4th attachment
-		_data = profileNamespace getVariable "CD_2ndWeaponAttachment4th";
-		_unit addHandgunItem _data;
-	}; hint format ["End 3"]; sleep(2);
-
-	// Add 3rd weapon
-	if (profileNamespace getVariable "CD_3rdWeapon" != "empty") then {
-			// Add magazine + count (Magazine will be added to weapon)
-			_data = profileNamespace getVariable "CD_3rdWeaponMagazine";
-			_data_2 = profileNamespace getVariable "CD_3rdWeaponMagazineCount";
-			_unit addMagazine [_data, _data_2];
-	// Add 3rd weapon
-	_data = profileNamespace getVariable "CD_3rdWeapon";
-	_unit addWeapon _data;
-		// Add 1st attachment
-		_data = profileNamespace getVariable "CD_3rdWeaponAttachment1st";
-		_unit addHandgunItem _data;
-		// Add 2nd attachment
-		_data = profileNamespace getVariable "CD_3rdWeaponAttachment2nd";
-		_unit addHandgunItem _data;
-		// Add 3rd attachment
-		_data = profileNamespace getVariable "CD_3rdWeaponAttachment3rd";
-		_unit addHandgunItem _data;
-		// Add 4th attachment
-		_data = profileNamespace getVariable "CD_3rdWeaponAttachment4th";
-		_unit addHandgunItem _data;
-	};  hint format ["End 4"]; sleep(2);
-
-	/*********************** Binoculars ***********************
-
-	// Add 4th weapon
-	if (profileNamespace getVariable "CD_4thWeapon" != "empty") then {
-			// Add magazine + count (Magazine will be added to weapon)
-			_data = profileNamespace getVariable "CD_4thWeaponMagazine";
-			_data_2 = profileNamespace getVariable "CD_4thWeaponMagazineCount";
-			_unit addMagazine [_data, _data_2];
-	// Add 4th weapon
-	_data = profileNamespace getVariable "CD_4thWeapon";
-	_unit addWeapon _data;
-		// Add 1st attachment
-		_data = profileNamespace getVariable "CD_4thWeaponAttachment1st";
-		_unit addHandgunItem _data;
-		// Add 2nd attachment
-		_data = profileNamespace getVariable "CD_4thWeaponAttachment2nd";
-		_unit addHandgunItem _data;
-		// Add 3rd attachment
-		_data = profileNamespace getVariable "CD_4thWeaponAttachment3rd";
-		_unit addHandgunItem _data;
-		// Add 4th attachment
-		_data = profileNamespace getVariable "CD_4thWeaponAttachment4th";
-		_unit addHandgunItem _data;
-	}; */
+	_array = profileNamespace getVariable "CD_weapons";
+	// How many weapons do we have?
+	_count = (count _array) - 1;
+	_data = (_array select _count) select 0;
+	while {_count >= 0} do
+		{
+			_hasMag = count ((_array select _count) select 4);
+			if (_hasMag > 0) then {
+				_data = ((_array select _count) select 4) select 0;
+				_data_2 = ((_array select _count) select 4) select 1;
+				_unit addMagazine [_data, _data_2];
+			};
+			_data = (_array select _count) select 0;
+			_unit addWeapon _data;
+			_data = (_array select _count) select 1;
+			_unit addPrimaryWeaponItem _data;
+			_unit addHandgunItem _data; 															// THIS IS NOT THE WAY IT SHOULD BE DONE!!! (TO-DO)
+			_data = (_array select _count) select 2;
+			_unit addPrimaryWeaponItem _data;
+			_unit addHandgunItem _data;
+			_data = (_array select _count) select 3;
+			_unit addPrimaryWeaponItem _data;
+			_unit addHandgunItem _data;
+			_data = (_array select _count) select 5;
+			_unit addPrimaryWeaponItem _data;
+			_unit addHandgunItem _data;
+			_count = _count -1;
+		};
 
 // Add uniform container
 	// Add magazines
-	_array = profileNamespace getVariable "CD_MagazineUniform";
+	_array = profileNamespace getVariable "CD_magazineUniform";
 	_count = (count (_array select 0) - 1);
 	while {_count >= 0} do {
 	   _data = (_array select 0) select _count;
@@ -166,7 +99,7 @@ _unit = _this select 1;																			// Get unit variable (actionmenu)
 	   _count = _count -1;
 	 }; 
 	// Add items
-	_array = profileNamespace getVariable "CD_ItemUniform";
+	_array = profileNamespace getVariable "CD_itemUniform";
 	_count = (count (_array select 0) - 1);
 	while {_count >= 0} do {
 	   _data = (_array select 0) select _count;
@@ -178,50 +111,50 @@ _unit = _this select 1;																			// Get unit variable (actionmenu)
 	   _count = _count -1;
 	 }; 
 	// Add weapons
-	_array = profileNamespace getVariable "CD_WeaponUniform";
+	_array = profileNamespace getVariable "CD_weaponUniform";
 	_count = (count (_array select 0) - 1);
 	while {_count >= 0} do {
-	   _data = (_array select 0) select _count;
-	   _data_2 = (_array select 1) select _count;
-	   _unit addWeapon [_data, _data_2];
-	   _count = _count -1;
-	 };
+		_data = (_array select 0) select _count;
+		_data_2 = (_array select 1) select _count;
+		_unit addWeaponCargo [_data,_data_2];
+		_count = _count -1;
+	};
 
 // Add vest container
 	// Add magazines
-	_array = profileNamespace getVariable "CD_MagazineVest";
+	_array = profileNamespace getVariable "CD_magazineVest";
 	_count = (count (_array select 0) - 1);
 	while {_count >= 0} do {
-	   _data = (_array select 0) select _count;
-	   _data_2 = (_array select 1) select _count;
-	   _unit addMagazines [_data, _data_2];
-	   _count = _count -1;
+		_data = (_array select 0) select _count;
+		_data_2 = (_array select 1) select _count;
+		_unit addMagazines [_data, _data_2];
+		_count = _count -1;
 	 }; 
 	// Add items
-	_array = profileNamespace getVariable "CD_ItemVest";
+	_array = profileNamespace getVariable "CD_itemVest";
 	_count = (count (_array select 0) - 1);
 	while {_count >= 0} do {
 	   _data = (_array select 0) select _count;
 	   _data_2 = (_array select 1) select _count;
-	   while {_data_2 >= 0} do {
-	     _unit addItemToVest _data;
-	     _data_2 = _data_2 -1;
-	   };
-	   _count = _count -1;
-	 }; 
-	// Add weapons
-	_array = profileNamespace getVariable "CD_WeaponVest";
-	_count = (count (_array select 0) - 1);
-	while {_count >= 0} do {
-	   _data = (_array select 0) select _count;
-	   _data_2 = (_array select 1) select _count;
-	   _unit addWeapon [_data, _data_2];
+		while {_data_2 >= 0} do {
+			_unit addItemToVest _data;
+			_data_2 = _data_2 -1;
+		};
 	   _count = _count -1;
 	 };
+	// Add weapons
+	_array = profileNamespace getVariable "CD_weaponVest";
+	_count = (count (_array select 0) - 1);
+	while {_count >= 0} do {
+		_data = (_array select 0) select _count;
+		_data_2 = (_array select 1) select _count;
+		_unit addWeaponCargo [_data,_data_2];
+		_count = _count -1;
+	};
 
 // Add backpack container
 	// Add magazines
-	_array = profileNamespace getVariable "CD_MagazineBackpack";
+	_array = profileNamespace getVariable "CD_magazineBackpack";
 	_count = (count (_array select 0) - 1);
 	while {_count >= 0} do {
 	   _data = (_array select 0) select _count;
@@ -230,7 +163,7 @@ _unit = _this select 1;																			// Get unit variable (actionmenu)
 	   _count = _count -1;
 	 }; 
 	// Add items
-	_array = profileNamespace getVariable "CD_ItemBackpack";
+	_array = profileNamespace getVariable "CD_itemBackpack";
 	_count = (count (_array select 0) - 1);
 	while {_count >= 0} do {
 	   _data = (_array select 0) select _count;
@@ -242,18 +175,11 @@ _unit = _this select 1;																			// Get unit variable (actionmenu)
 	   _count = _count -1;
 	 }; 
 	// Add weapons
-	_array = profileNamespace getVariable "CD_WeaponBackpack";
+	_array = profileNamespace getVariable "CD_weaponBackpack";
 	_count = (count (_array select 0) - 1);
 	while {_count >= 0} do {
-	   _data = (_array select 0) select _count;
-	   _data_2 = (_array select 1) select _count;
-	   _unit addWeapon [_data, _data_2];
-	   _count = _count -1;
-	 };
-
-// Clear "Premium Item" (MAGIC -> Has to be changed)
-	_i = 12;
-	while {_i > 0} do {
-	  _unit removeItem "";
-	  _i - 1;
+		_data = (_array select 0) select _count;
+		_data_2 = (_array select 1) select _count;
+		_unit addWeaponCargo [_data,_data_2];
+		_count = _count -1;
 	};

@@ -2,65 +2,76 @@
 	Author: github.com/Chrobo
 */
 
-private["_unit","_weapons","_assignedItems","_primary","_headGear","_vest","_uniform","_backpack","_goggles","_handgun","_blacklist","_array"]; 				// Sets up multiple local variables
+// Select triggering unit
+// _unit = _this select 1;																			// Get unit variable (actionmenu)
+// Alternative: unit = (thisList select 0); _this = execVM "script.sqf"; 						// Get unit variable (trigger activation)
+_unit = unit;
 
-// unit = _this select 1;																																		// Get unit variable (actionmenu)			To-Do: One solution, not two!
-// Alternative: unit = (thisList select 0); _this = execVM "script.sqf"; 																						// Get unit variable (trigger activation)
+// Get uniform
+	_array = uniform _unit;
+	profileNamespace setVariable ["CD_uniform",_array];
 
-_unit = unit; 																																					// Save global variable into local
+// Get vest
+	_array = vest _unit;
+	profileNamespace setVariable ["CD_vest",_array];
 
-_weapons = weaponsItems _unit;																																	// Get classes from unit and save it in local variable
-_assignedItems = assignedItems _unit;																															// (Very dirty, has to be changed)
-_primary = primaryWeapon _unit;
-_headGear = headgear _unit; 
-_vest = vest _unit;
-_uniform = uniform _unit;
-_backpack = backpack _unit;
-_goggles = goggles _unit;
-_handgun = handgunWeapon _unit;
-if (CD_debugEnabled) then {
-	hint parseText format["<t align='left'>_unit: %1,
-	<br/><br/>_weapons: %2,
-	<br/><br/>_assignedItems: %3,
-	<br/><br/>_primary: %4,
-	<br/><br/>_headGear: %5,
-	<br/><br/>_vest: %6,
-	<br/><br/>_uniform: %7,
-	<br/><br/>_backpack: %8,
-	<br/><br/>_goggles: %9,
-	<br/><br/>_handgun: %10</t>",_unit,_weapons,_assignedItems,_primary,_headGear,_vest,_uniform,_backpack,_goggles,_handgun];
-};
+// Get backpack
+	_array = backpack _unit;
+	profileNamespace setVariable ["CD_backpack",_array];
 
-// Get stuff from containers
-private["_uniformContainer","_vestContainer","_backpackContainer"];																								// Sets up multiple local variables
+// Get headgear
+	_array = headgear _unit;
+	profileNamespace setVariable ["CD_headgear",_array];
 
-_uniformContainer = getItemCargo uniformContainer _unit;
-_uniformContainer = _uniformContainer + getMagazineCargo uniformContainer _unit;
-_uniformContainer = _uniformContainer + getWeaponCargo uniformContainer _unit;
+// Get goggles
+	_array = goggles _unit;
+	profileNamespace setVariable ["CD_goggles",_array];
 
-_vestContainer = getItemCargo vestContainer _unit;
-_vestContainer = _vestContainer + getMagazineCargo vestContainer _unit;
-_vestContainer = _vestContainer + getWeaponCargo vestContainer _unit;
+// Get Head Mounted Display
+	_array = hmd _unit;
+	profileNamespace setVariable ["CD_headMountedDisplay",_array];
 
-_backpackContainer = getItemCargo backpackContainer _unit;
-_backpackContainer = _backpackContainer + getMagazineCargo backpackContainer _unit;
-_backpackContainer = _backpackContainer + getWeaponCargo backpackContainer _unit;
+// Get binocular
+	_array = binocular _unit;
+	profileNamespace setVariable ["CD_binocular",_array];
 
-if (CD_debugEnabled) then {
-	hint parseText format["<t align='left'>_unit: %1,
-	<br/><br/>_uniformContainer: %2,
-	<br/><br/>_vestContainer: %3,
-	<br/><br/>_backpackContainer: %4</t>",_unit,_uniformContainer,_vestContainer,_backpackContainer];
-};
+// Get assigned items
+	_array = assignedItems _unit;
+	profileNamespace setVariable ["CD_assignedItems",_array];
 
-// Let's save it into users profile! (Very dirty, has to be changed)
-profileNamespace setVariable ["CD_primary",_primary];
-profileNamespace setVariable ["CD_handgun",_handgun];
-profileNamespace setVariable ["CD_headGear",_headGear];
-profileNamespace setVariable ["CD_vest",_vest];
-profileNamespace setVariable ["CD_uniform",_uniform];
-profileNamespace setVariable ["CD_backpack",_backpack];
-profileNamespace setVariable ["CD_goggles",_goggles];
-saveProfileNamespace;
+// Get weapons
+	_array = weaponsItems _unit;
+	profileNamespace setVariable ["CD_weapons",_array];
 
-// copyToClipboard XY;
+// Get uniform container
+	// Get magazines
+	_array = getMagazineCargo uniformContainer _unit;
+	profileNamespace setVariable ["CD_magazineUniform",_array];
+	// Get items
+	_array = getItemCargo uniformContainer _unit;
+	profileNamespace setVariable ["CD_itemUniform",_array];
+	// Get weapons
+	_array = getWeaponCargo uniformContainer _unit;
+	profileNamespace setVariable ["CD_weaponUniform",_array];
+
+// Get vest container
+	// Get magazines
+	_array = getMagazineCargo vestContainer _unit;
+	profileNamespace setVariable ["CD_magazineVest",_array];
+	// Get items
+	_array = getItemCargo vestContainer _unit;
+	profileNamespace setVariable ["CD_itemVest",_array];
+	// Get weapons
+	_array = getWeaponCargo vestContainer _unit;
+	profileNamespace setVariable ["CD_weaponVest",_array];
+
+// Get backpack container
+	// Get magazines
+	_array = getMagazineCargo backpackContainer _unit;
+	profileNamespace setVariable ["CD_magazineBackpack",_array];
+	// Get items
+	_array = getItemCargo backpackContainer _unit;
+	profileNamespace setVariable ["CD_itemBackpack",_array];
+	// Get weapons
+	_array = getWeaponCargo backpackContainer _unit;
+	profileNamespace setVariable ["CD_weaponBackpack",_array];
