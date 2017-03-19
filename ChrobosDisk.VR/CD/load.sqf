@@ -7,6 +7,9 @@ _unit = _this select 1;																			// Get unit variable (actionmenu)
 // Alternative: unit = (thisList select 0); _this = execVM "script.sqf"; 						// Get unit variable (trigger activation) BUGGGGGY!!!
 // _unit = unit;
 
+// Get player UID
+	_uid = getPlayerUID _unit;
+
 // Clear Inventory
 	removeHeadgear _unit:
 	removeGoggles _unit;
@@ -17,39 +20,39 @@ _unit = _this select 1;																			// Get unit variable (actionmenu)
 	removeAllAssignedItems _unit;
 
 // Add uniform
-	_data = profileNamespace getVariable "CD_uniform";
+	_data = profileNamespace getVariable "CD_uniform"+_uid;
 	_unit addUniform _data;
 
 // Add vest
-	_data = profileNamespace getVariable "CD_vest";
+	_data = profileNamespace getVariable "CD_vest"+_uid;
 	_unit addVest _data;
 
 // Add backpack
-	_data = profileNamespace getVariable "CD_backpack";
+	_data = profileNamespace getVariable "CD_backpack"+_uid;
 	_unit addBackpack _data;
 
 // Add headgear
-	_data = profileNamespace getVariable "CD_headgear";
+	_data = profileNamespace getVariable "CD_headgear"+_uid;
 	_unit addHeadgear _data;
 
 // Add goggles
-	_data = profileNamespace getVariable "CD_goggles";
+	_data = profileNamespace getVariable "CD_goggles"+_uid;
 	_unit addGoggles _data;
 
 // Add Head Mounted Display
-	_data = profileNamespace getVariable "CD_headMountedDisplay";
+	_data = profileNamespace getVariable "CD_headMountedDisplay"+_uid;
 	_unit addWeapon _data;
 
 // Add binocular
-	_data = profileNamespace getVariable "CD_binocular";
+	_data = profileNamespace getVariable "CD_binocular"+_uid;
 	_unit addWeapon _data;
 
 // Add assigned Items
-	_array = profileNamespace getVariable "CD_assignedItems";
+	_array = profileNamespace getVariable "CD_assignedItems"+_uid;
 	_count = (count _array) -1;
 	while {_count >= 0} do {
 		_data = _array select _count;
-		if (_data != profileNamespace getVariable "CD_binocular") then {
+		if (_data != profileNamespace getVariable "CD_binocular"+_uid) then {
 		 	_unit addItem _data;
 			_unit assignItem _data;
 			_count = _count -1;
@@ -59,7 +62,7 @@ _unit = _this select 1;																			// Get unit variable (actionmenu)
 		};
 	};
 // Add weapons
-	_array = profileNamespace getVariable "CD_weapons";
+	_array = profileNamespace getVariable "CD_weapons"+_uid;
 	// How many weapons do we have?
 	_count = (count _array) - 1;
 	_data = (_array select _count) select 0;
@@ -90,7 +93,7 @@ _unit = _this select 1;																			// Get unit variable (actionmenu)
 
 // Add uniform container
 	// Add magazines
-	_array = profileNamespace getVariable "CD_magazineUniform";
+	_array = profileNamespace getVariable "CD_magazineUniform"+_uid;
 	_count = (count (_array select 0) - 1);
 	while {_count >= 0} do {
 	   _data = (_array select 0) select _count;
@@ -99,7 +102,7 @@ _unit = _this select 1;																			// Get unit variable (actionmenu)
 	   _count = _count -1;
 	 }; 
 	// Add items
-	_array = profileNamespace getVariable "CD_itemUniform";
+	_array = profileNamespace getVariable "CD_itemUniform"+_uid;
 	_count = (count (_array select 0) - 1);
 	while {_count >= 0} do {
 	   _data = (_array select 0) select _count;
@@ -111,7 +114,7 @@ _unit = _this select 1;																			// Get unit variable (actionmenu)
 	   _count = _count -1;
 	 }; 
 	// Add weapons
-	_array = profileNamespace getVariable "CD_weaponUniform";
+	_array = profileNamespace getVariable "CD_weaponUniform"+_uid;
 	_count = (count (_array select 0) - 1);
 	while {_count >= 0} do {
 		_data = (_array select 0) select _count;
@@ -122,7 +125,7 @@ _unit = _this select 1;																			// Get unit variable (actionmenu)
 
 // Add vest container
 	// Add magazines
-	_array = profileNamespace getVariable "CD_magazineVest";
+	_array = profileNamespace getVariable "CD_magazineVest"+_uid;
 	_count = (count (_array select 0) - 1);
 	while {_count >= 0} do {
 		_data = (_array select 0) select _count;
@@ -131,7 +134,7 @@ _unit = _this select 1;																			// Get unit variable (actionmenu)
 		_count = _count -1;
 	 }; 
 	// Add items
-	_array = profileNamespace getVariable "CD_itemVest";
+	_array = profileNamespace getVariable "CD_itemVest"+_uid;
 	_count = (count (_array select 0) - 1);
 	while {_count >= 0} do {
 	   _data = (_array select 0) select _count;
@@ -143,7 +146,7 @@ _unit = _this select 1;																			// Get unit variable (actionmenu)
 	   _count = _count -1;
 	 };
 	// Add weapons
-	_array = profileNamespace getVariable "CD_weaponVest";
+	_array = profileNamespace getVariable "CD_weaponVest"+_uid;
 	_count = (count (_array select 0) - 1);
 	while {_count >= 0} do {
 		_data = (_array select 0) select _count;
@@ -154,7 +157,7 @@ _unit = _this select 1;																			// Get unit variable (actionmenu)
 
 // Add backpack container
 	// Add magazines
-	_array = profileNamespace getVariable "CD_magazineBackpack";
+	_array = profileNamespace getVariable "CD_magazineBackpack"+_uid;
 	_count = (count (_array select 0) - 1);
 	while {_count >= 0} do {
 	   _data = (_array select 0) select _count;
@@ -163,7 +166,7 @@ _unit = _this select 1;																			// Get unit variable (actionmenu)
 	   _count = _count -1;
 	 }; 
 	// Add items
-	_array = profileNamespace getVariable "CD_itemBackpack";
+	_array = profileNamespace getVariable "CD_itemBackpack"+_uid;
 	_count = (count (_array select 0) - 1);
 	while {_count >= 0} do {
 	   _data = (_array select 0) select _count;
@@ -175,7 +178,7 @@ _unit = _this select 1;																			// Get unit variable (actionmenu)
 	   _count = _count -1;
 	 }; 
 	// Add weapons
-	_array = profileNamespace getVariable "CD_weaponBackpack";
+	_array = profileNamespace getVariable "CD_weaponBackpack"+_uid;
 	_count = (count (_array select 0) - 1);
 	while {_count >= 0} do {
 		_data = (_array select 0) select _count;
