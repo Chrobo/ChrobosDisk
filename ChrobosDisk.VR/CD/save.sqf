@@ -4,7 +4,7 @@
 
 // Select triggering unit
 _unit = _this select 1;																			// Get unit variable (actionmenu)
-// Alternative: unit = (thisList select 0); _this = execVM "script.sqf"; 						// Get unit variable (trigger activation)
+// Alternative: unit = (thisList select 0); _this = execVM "script.sqf"; 						// Get unit variable (trigger activation) BUGGGGGY!!!
 // _unit = unit;
 
 // Get uniform
