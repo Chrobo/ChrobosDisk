@@ -78,3 +78,6 @@ _unit = _this select 1;																			// Get unit variable (actionmenu)
 	// Get weapons
 	_array = getWeaponCargo backpackContainer _unit;
 	profileNamespace setVariable ["CD_weaponBackpack"+_uid,_array];
+
+// Save the variables to the persistent user profile.
+saveProfileNamespace;

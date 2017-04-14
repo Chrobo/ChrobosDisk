@@ -80,3 +80,6 @@ while {_playerCount >= 0} do {
 		_array = getWeaponCargo backpackContainer _unit;
 		profileNamespace setVariable ["CD_weaponBackpack"+_uid,_array];
 };
+
+// Save the variables to the persistent user profile.
+saveProfileNamespace;
