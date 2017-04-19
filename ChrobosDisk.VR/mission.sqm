@@ -12,14 +12,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=56;
+		nextID=60;
 	};
 	class Camera
 	{
-		pos[]={7383.9702,59.551178,7514.957};
-		dir[]={0.96412081,-0.26527715,-0.01923844};
-		up[]={0.26535866,0.96411222,-0.0052947546};
-		aside[]={-0.019951839,-1.1205328e-006,-0.99990255};
+		pos[]={7109.6543,383.61795,7482.9014};
+		dir[]={0.7247591,-0.68507195,0.07531324};
+		up[]={0.6814279,0.72842103,0.070810691};
+		aside[]={0.10336863,-1.218641e-006,-0.99474436};
 	};
 };
 binarizationWanted=0;
@@ -27,7 +27,6 @@ addons[]=
 {
 	"A3_Characters_F",
 	"A3_Structures_F_EPC_Civ_Accessories",
-	"ALiVE_Missions",
 	"A3_Structures_F_EPB_Items_Military",
 	"A3_Characters_F_Exp_Civil"
 };
@@ -35,7 +34,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=5;
+		items=4;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -52,17 +51,12 @@ class AddonsMetaData
 		};
 		class Item2
 		{
-			className="ALiVE_Missions";
-			name="ALiVE_Missions";
-		};
-		class Item3
-		{
 			className="A3_Structures_F_EPB";
 			name="Arma 3 Adapt Episode - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item4
+		class Item3
 		{
 			className="A3_Characters_F_Exp";
 			name="Arma 3 Apex - Characters and Clothing";
