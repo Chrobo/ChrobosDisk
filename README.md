@@ -18,8 +18,20 @@ ChrobosDisk is a framework which allows the mission builder to save and load dat
 * [Download](#)
 
 ## Installing (To-Do)
-
-
+1. Put this into your _"init.sqf"_ file:
+```sqf
+//Initialize ChrobosDisk (CD)
+execVM "CD\initChrobosDisk.sqf";
+```
+2. Copy and paste the _"CD"_ folder into your mission folder.
+3. In order to save all player inventories when a trigger is activated, put this into a triggers init:
+```sqf
+_this = execVM "CD\saveAll.sqf";
+```
+4. In order to load all player inventories when the mission starts, put this into the _"init.sqf"_ file:
+```sqf
+_this = execVM "CD\loadAll.sqf";
+```
 
 <p align="center">
 	<img src="https://raw.githubusercontent.com/Chrobo/ChrobosDisk/497c4a5e534bc56090965e081f6f40308078f17d/assets/ChrobosDisk.png" width="150px" />
