@@ -8,18 +8,18 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=90;
+		nextID=93;
 	};
 	class LayerIndexProvider
 	{
-		nextID=44;
+		nextID=60;
 	};
 	class Camera
 	{
-		pos[]={7369.6929,86.115425,7514.0889};
-		dir[]={0.87256509,-0.48841599,-0.018132826};
-		up[]={0.48838955,0.87254572,-0.010149445};
-		aside[]={-0.020779412,-1.033068e-006,-0.99989438};
+		pos[]={7409.7441,11.766946,7499.9517};
+		dir[]={0.6155175,-0.08489266,0.78368354};
+		up[]={0.052745897,0.99633741,0.067157298};
+		aside[]={0.78652602,1.4166435e-006,-0.61774993};
 	};
 };
 binarizationWanted=0;
@@ -27,7 +27,6 @@ addons[]=
 {
 	"A3_Characters_F",
 	"A3_Structures_F_EPC_Civ_Accessories",
-	"A3_Structures_F_Heli_VR_Helpers",
 	"A3_Structures_F_EPB_Items_Military",
 	"A3_Characters_F_Exp_Civil"
 };
@@ -35,7 +34,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=5;
+		items=4;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -52,19 +51,12 @@ class AddonsMetaData
 		};
 		class Item2
 		{
-			className="A3_Structures_F_Heli";
-			name="Arma 3 Helicopters - Buildings and Structures";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item3
-		{
 			className="A3_Structures_F_EPB";
 			name="Arma 3 Adapt Episode - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item4
+		class Item3
 		{
 			className="A3_Characters_F_Exp";
 			name="Arma 3 Apex - Characters and Clothing";
@@ -224,14 +216,14 @@ class Mission
 	};
 	class Entities
 	{
-		items=4;
+		items=6;
 		class Item0
 		{
 			dataType="Layer";
 			name="BLUFOR";
 			class Entities
 			{
-				items=11;
+				items=5;
 				class Item0
 				{
 					dataType="Group";
@@ -297,23 +289,6 @@ class Mission
 				};
 				class Item1
 				{
-					dataType="Trigger";
-					position[]={7461.0269,5,7509.0811};
-					angle=1.6199796;
-					class Attributes
-					{
-						text="Save";
-						onActivation="unit = (thisList select 0); _this = execVM ""CD\saveTriggered.sqf"";";
-						sizeA=1;
-						sizeB=1;
-						repeatable=1;
-						activationBy="ANY";
-					};
-					id=43;
-					type="EmptyDetector";
-				};
-				class Item2
-				{
 					dataType="Object";
 					class PositionInfo
 					{
@@ -330,7 +305,7 @@ class Mission
 					id=45;
 					type="Land_Atm_01_F";
 				};
-				class Item3
+				class Item2
 				{
 					dataType="Comment";
 					class PositionInfo
@@ -343,105 +318,7 @@ class Mission
 					id=46;
 					atlOffset=1.3130002;
 				};
-				class Item4
-				{
-					dataType="Comment";
-					class PositionInfo
-					{
-						position[]={7460.9736,5,7509.0518};
-						angles[]={0,1.6199715,0};
-					};
-					title="Location to save";
-					description="Location to save.";
-					id=47;
-				};
-				class Item5
-				{
-					dataType="Trigger";
-					position[]={7461.0229,5,7504.9961};
-					angle=1.6199796;
-					class Attributes
-					{
-						text="Load";
-						onActivation="unit = (thisList select 0); _this = execVM ""CD\loadTriggered.sqf"";";
-						sizeA=1;
-						sizeB=1;
-						repeatable=1;
-						activationBy="ANY";
-					};
-					id=48;
-					type="EmptyDetector";
-				};
-				class Item6
-				{
-					dataType="Comment";
-					class PositionInfo
-					{
-						position[]={7460.9697,5,7504.9663};
-						angles[]={0,1.6199715,0};
-					};
-					title="Location to load";
-					description="Location to load.";
-					id=50;
-				};
-				class Item7
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={7461.021,5,7509.0781};
-						angles[]={0,1.6199797,0};
-					};
-					side="Empty";
-					flags=4;
-					class Attributes
-					{
-						createAsSimpleObject=1;
-					};
-					id=51;
-					type="Sign_Sphere200cm_F";
-				};
-				class Item8
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={7461.0181,5,7504.9941};
-						angles[]={0,1.6199797,0};
-					};
-					side="Empty";
-					flags=4;
-					class Attributes
-					{
-						createAsSimpleObject=1;
-					};
-					id=52;
-					type="Sign_Sphere200cm_F";
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="ObjectTextureCustom0";
-							expression="_this setObjectTextureGlobal [0,_value]";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="#(argb,8,8,3)color(0,0.6,0.1,1.0,ca)";
-								};
-							};
-						};
-						nAttributes=1;
-					};
-				};
-				class Item9
+				class Item3
 				{
 					dataType="Object";
 					class PositionInfo
@@ -458,7 +335,7 @@ class Mission
 					id=54;
 					type="Land_Ammobox_rounds_F";
 				};
-				class Item10
+				class Item4
 				{
 					dataType="Comment";
 					class PositionInfo
@@ -472,7 +349,7 @@ class Mission
 				};
 			};
 			id=86;
-			atlOffset=0.0051288605;
+			atlOffset=0.16412497;
 		};
 		class Item1
 		{
@@ -480,7 +357,7 @@ class Mission
 			name="OPFOR";
 			class Entities
 			{
-				items=11;
+				items=5;
 				class Item0
 				{
 					dataType="Group";
@@ -588,23 +465,6 @@ class Mission
 				};
 				class Item1
 				{
-					dataType="Trigger";
-					position[]={7577.0493,5,7514.9536};
-					angle=4.7203822;
-					class Attributes
-					{
-						text="Save";
-						onActivation="unit = (thisList select 0); _this = execVM ""CD\saveTriggered.sqf"";";
-						sizeA=1;
-						sizeB=1;
-						repeatable=1;
-						activationBy="ANY";
-					};
-					id=66;
-					type="EmptyDetector";
-				};
-				class Item2
-				{
 					dataType="Object";
 					class PositionInfo
 					{
@@ -621,7 +481,7 @@ class Mission
 					id=67;
 					type="Land_Atm_01_F";
 				};
-				class Item3
+				class Item2
 				{
 					dataType="Comment";
 					class PositionInfo
@@ -634,109 +494,7 @@ class Mission
 					id=68;
 					atlOffset=1.3130078;
 				};
-				class Item4
-				{
-					dataType="Comment";
-					class PositionInfo
-					{
-						position[]={7577.1016,5.0000763,7514.9849};
-						angles[]={0,4.720376,0};
-					};
-					title="Location to save";
-					description="Location to save.";
-					id=69;
-					atlOffset=7.6293945e-005;
-				};
-				class Item5
-				{
-					dataType="Trigger";
-					position[]={7576.9917,5.125,7519.0298};
-					angle=4.7203822;
-					class Attributes
-					{
-						text="Load";
-						onActivation="unit = (thisList select 0); _this = execVM ""CD\loadTriggered.sqf"";";
-						sizeA=1;
-						sizeB=1;
-						repeatable=1;
-						activationBy="ANY";
-					};
-					id=70;
-					type="EmptyDetector";
-					atlOffset=0.125;
-				};
-				class Item6
-				{
-					dataType="Comment";
-					class PositionInfo
-					{
-						position[]={7577.0439,5.2820587,7519.0615};
-						angles[]={0,4.720376,0};
-					};
-					title="Location to load";
-					description="Location to load.";
-					id=71;
-					atlOffset=0.28205872;
-				};
-				class Item7
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={7577.0552,5,7514.9565};
-						angles[]={0,4.7203846,0};
-					};
-					side="Empty";
-					flags=4;
-					class Attributes
-					{
-						createAsSimpleObject=1;
-					};
-					id=72;
-					type="Sign_Sphere200cm_F";
-				};
-				class Item8
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={7576.9966,5.0625,7519.0317};
-						angles[]={0,4.7203846,0};
-					};
-					side="Empty";
-					flags=4;
-					class Attributes
-					{
-						createAsSimpleObject=1;
-					};
-					id=73;
-					type="Sign_Sphere200cm_F";
-					atlOffset=0.0625;
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="ObjectTextureCustom0";
-							expression="_this setObjectTextureGlobal [0,_value]";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="#(argb,8,8,3)color(0,0.6,0.1,1.0,ca)";
-								};
-							};
-						};
-						nAttributes=1;
-					};
-				};
-				class Item9
+				class Item3
 				{
 					dataType="Object";
 					class PositionInfo
@@ -753,7 +511,7 @@ class Mission
 					id=74;
 					type="Land_Ammobox_rounds_F";
 				};
-				class Item10
+				class Item4
 				{
 					dataType="Comment";
 					class PositionInfo
@@ -768,7 +526,7 @@ class Mission
 				};
 			};
 			id=87;
-			atlOffset=0.023747444;
+			atlOffset=0.16416407;
 		};
 		class Item2
 		{
@@ -776,7 +534,7 @@ class Mission
 			name="Independent";
 			class Entities
 			{
-				items=11;
+				items=5;
 				class Item0
 				{
 					dataType="Group";
@@ -823,7 +581,7 @@ class Mission
 							dataType="Object";
 							class PositionInfo
 							{
-								position[]={7521.6108,5.0014391,7582.0142};
+								position[]={7300.6172,5.0014391,7686.1206};
 								angles[]={0,3.1350129,0};
 							};
 							side="Independent";
@@ -884,23 +642,6 @@ class Mission
 				};
 				class Item1
 				{
-					dataType="Trigger";
-					position[]={7521.0698,5,7570.9917};
-					angle=-3.1221673;
-					class Attributes
-					{
-						text="Save";
-						onActivation="unit = (thisList select 0); _this = execVM ""CD\saveTriggered.sqf"";";
-						sizeA=1;
-						sizeB=1;
-						repeatable=1;
-						activationBy="ANY";
-					};
-					id=56;
-					type="EmptyDetector";
-				};
-				class Item2
-				{
 					dataType="Object";
 					class PositionInfo
 					{
@@ -917,7 +658,7 @@ class Mission
 					id=57;
 					type="Land_Atm_01_F";
 				};
-				class Item3
+				class Item2
 				{
 					dataType="Comment";
 					class PositionInfo
@@ -930,105 +671,7 @@ class Mission
 					id=58;
 					atlOffset=1.3129315;
 				};
-				class Item4
-				{
-					dataType="Comment";
-					class PositionInfo
-					{
-						position[]={7521.0391,5,7571.0444};
-						angles[]={0,3.1610088,0};
-					};
-					title="Location to save";
-					description="Location to save.";
-					id=59;
-				};
-				class Item5
-				{
-					dataType="Trigger";
-					position[]={7516.9932,5,7570.9805};
-					angle=3.1610165;
-					class Attributes
-					{
-						text="Load";
-						onActivation="unit = (thisList select 0); _this = execVM ""CD\loadTriggered.sqf"";";
-						sizeA=1;
-						sizeB=1;
-						repeatable=1;
-						activationBy="ANY";
-					};
-					id=60;
-					type="EmptyDetector";
-				};
-				class Item6
-				{
-					dataType="Comment";
-					class PositionInfo
-					{
-						position[]={7516.9619,5,7571.0332};
-						angles[]={0,3.1610088,0};
-					};
-					title="Location to load";
-					description="Location to load.";
-					id=61;
-				};
-				class Item7
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={7521.0669,5,7570.9976};
-						angles[]={0,3.1610172,0};
-					};
-					side="Empty";
-					flags=4;
-					class Attributes
-					{
-						createAsSimpleObject=1;
-					};
-					id=62;
-					type="Sign_Sphere200cm_F";
-				};
-				class Item8
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={7516.9912,5,7570.9854};
-						angles[]={0,3.1610172,0};
-					};
-					side="Empty";
-					flags=4;
-					class Attributes
-					{
-						createAsSimpleObject=1;
-					};
-					id=63;
-					type="Sign_Sphere200cm_F";
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="ObjectTextureCustom0";
-							expression="_this setObjectTextureGlobal [0,_value]";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="#(argb,8,8,3)color(0,0.6,0.1,1.0,ca)";
-								};
-							};
-						};
-						nAttributes=1;
-					};
-				};
-				class Item9
+				class Item3
 				{
 					dataType="Object";
 					class PositionInfo
@@ -1045,7 +688,7 @@ class Mission
 					id=64;
 					type="Land_Ammobox_rounds_F";
 				};
-				class Item10
+				class Item4
 				{
 					dataType="Comment";
 					class PositionInfo
@@ -1059,7 +702,7 @@ class Mission
 				};
 			};
 			id=88;
-			atlOffset=0.0051288605;
+			atlOffset=0.16411638;
 		};
 		class Item3
 		{
@@ -1067,7 +710,7 @@ class Mission
 			name="Civilian";
 			class Entities
 			{
-				items=11;
+				items=5;
 				class Item0
 				{
 					dataType="Group";
@@ -1175,24 +818,6 @@ class Mission
 				};
 				class Item1
 				{
-					dataType="Trigger";
-					position[]={7523.002,5.0000534,7460.9536};
-					angle=-0.0011507467;
-					class Attributes
-					{
-						text="Save";
-						onActivation="unit = (thisList select 0); _this = execVM ""CD\saveTriggered.sqf"";";
-						sizeA=1;
-						sizeB=1;
-						repeatable=1;
-						activationBy="ANY";
-					};
-					id=76;
-					type="EmptyDetector";
-					atlOffset=5.3405762e-005;
-				};
-				class Item2
-				{
 					dataType="Object";
 					class PositionInfo
 					{
@@ -1209,7 +834,7 @@ class Mission
 					id=77;
 					type="Land_Atm_01_F";
 				};
-				class Item3
+				class Item2
 				{
 					dataType="Comment";
 					class PositionInfo
@@ -1222,108 +847,7 @@ class Mission
 					id=78;
 					atlOffset=1.3129153;
 				};
-				class Item4
-				{
-					dataType="Comment";
-					class PositionInfo
-					{
-						position[]={7523.0337,5,7460.9019};
-						angles[]={0,6.2820263,0};
-					};
-					title="Location to save";
-					description="Location to save.";
-					id=79;
-				};
-				class Item5
-				{
-					dataType="Trigger";
-					position[]={7527.0776,5.0000534,7461.0483};
-					angle=-0.0011512242;
-					class Attributes
-					{
-						text="Load";
-						onActivation="unit = (thisList select 0); _this = execVM ""CD\loadTriggered.sqf"";";
-						sizeA=1;
-						sizeB=1;
-						repeatable=1;
-						activationBy="ANY";
-					};
-					id=80;
-					type="EmptyDetector";
-					atlOffset=5.3405762e-005;
-				};
-				class Item6
-				{
-					dataType="Comment";
-					class PositionInfo
-					{
-						position[]={7527.1099,5,7460.9966};
-						angles[]={0,6.2820263,0};
-					};
-					title="Location to load";
-					description="Location to load.";
-					id=81;
-				};
-				class Item7
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={7523.0049,5.0000534,7460.9478};
-						angles[]={0,6.2820349,0};
-					};
-					side="Empty";
-					flags=4;
-					class Attributes
-					{
-						createAsSimpleObject=1;
-					};
-					id=82;
-					type="Sign_Sphere200cm_F";
-					atlOffset=5.3405762e-005;
-				};
-				class Item8
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={7527.0796,5.0000534,7461.0435};
-						angles[]={0,6.2820349,0};
-					};
-					side="Empty";
-					flags=4;
-					class Attributes
-					{
-						createAsSimpleObject=1;
-					};
-					id=83;
-					type="Sign_Sphere200cm_F";
-					atlOffset=5.3405762e-005;
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="ObjectTextureCustom0";
-							expression="_this setObjectTextureGlobal [0,_value]";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="#(argb,8,8,3)color(0,0.6,0.1,1.0,ca)";
-								};
-							};
-						};
-						nAttributes=1;
-					};
-				};
-				class Item9
+				class Item3
 				{
 					dataType="Object";
 					class PositionInfo
@@ -1341,7 +865,7 @@ class Mission
 					type="Land_Ammobox_rounds_F";
 					atlOffset=5.7220459e-005;
 				};
-				class Item10
+				class Item4
 				{
 					dataType="Comment";
 					class PositionInfo
@@ -1356,7 +880,41 @@ class Mission
 				};
 			};
 			id=89;
-			atlOffset=0.0051555634;
+			atlOffset=0.16413069;
+		};
+		class Item4
+		{
+			dataType="Trigger";
+			position[]={7516.9341,41.841957,7509.7739};
+			class Attributes
+			{
+				text="Save";
+				onActivation="_this = execVM ""CD\saveAll.sqf"";  ";
+				sizeA=0;
+				sizeB=0;
+				repeatable=1;
+				activationBy="HOTEL";
+			};
+			id=90;
+			type="EmptyDetector";
+			atlOffset=47.841957;
+		};
+		class Item5
+		{
+			dataType="Trigger";
+			position[]={7526.9185,41.956116,7518.5659};
+			class Attributes
+			{
+				text="Load";
+				onActivation="_this = execVM ""CD\loadAll.sqf""; ";
+				sizeA=0;
+				sizeB=0;
+				repeatable=1;
+				activationBy="INDIA";
+			};
+			id=91;
+			type="EmptyDetector";
+			atlOffset=47.956116;
 		};
 	};
 };
